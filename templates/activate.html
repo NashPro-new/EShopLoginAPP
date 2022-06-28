@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Reactivation</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+
+    <center>
+    <h1 class="display-3" style="background-color:#000000;color:#FFFF99;">Reactivation</h1>
+    <div> <p> Your account is deactivated! Do you want to reactivate your account?</p></div>
+    <div class="text-center p-t-136">
+        <a class="txt2" href="/">
+            Yes
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+    </div>
+    {% block content %}
+    <a href="/deactivate/{{cust.id}}" class = 'navbar-link btn-lg'>No</a>
+    {% endblock %}
+    
+    
+</center>
+
+</body>
+</html>

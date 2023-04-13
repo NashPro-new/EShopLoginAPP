@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +17,27 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
       <a href="/edit/{{cust.id}}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Edit</a>
       <a href="/delete/{{cust.id}}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Delete</a>
       <a href="/deactivate/{{cust.id}}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Deactivate</a>
+      <a href="#" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Cart</a> 
       <a href="/signout" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Signout</a> 
    
   </nav>
+
+    <div class = "product-list">
+    {% for product in products %}
+    <div class="product">
+      <img src="{{ product.image.url }}" alt="{{ product.title }}">
+      <li>{{ product.title }}</li>
+      <li>{{ product.price }}</li>
+      <form method="POST" action="{% url 'signout' %}">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <button type="submit">Add to cart</button>
+    </form>
+    </div>
+		{% endfor %}
+    </div>
+
+  </div>
   {% endblock %}
 
 </body>

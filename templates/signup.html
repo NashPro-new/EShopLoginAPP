@@ -1,5 +1,4 @@
 {% load static %}
-
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,9 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+	
     <!-- Body of Form starts -->
   	<div class="container">
-      <form method="post" autocomplete="on">
+		
+      <form method="POST" autocomplete="on">
+		
         {% csrf_token %}
     		<div class="box">
           <label for="fname" class="fl fontLabel"> First Name: </label>
@@ -52,6 +54,7 @@
 
 
     		<!---Email ID---->
+			
     		<div class="box">
           <label for="email" class="fl fontLabel"> Email ID: </label>
     			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
@@ -87,6 +90,13 @@
 				<a class="redirect" href="/" style="background: #2d3e3f">
 					Sign in
 				</a>
+						{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+							<li>{{ message }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
     		<!---Submit Button----->
       </form>
   </div>

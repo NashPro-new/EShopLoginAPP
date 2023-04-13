@@ -28,11 +28,14 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
+			
 			<div class="wrap-login100">
+
+					
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="{% static 'img/img-01.png' %}" alt="IMG">
 				</div>
-
+				
 				<form class="login100-form validate-form" method = 'post'>
 					{% csrf_token %}
 					<span class="login100-form-title">
@@ -59,6 +62,15 @@
 						<button class="login100-form-btn" method = 'POST'>
 							Sign in
 						</button>
+					<div class="messages">
+						{% if messages %}
+						<ul class="messages">
+							{% for message in messages %}
+							<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+							{% endfor %}
+						</ul>
+						{% endif %}
+					</div>
 					</div>
 
 					<div class="text-center p-t-12">
